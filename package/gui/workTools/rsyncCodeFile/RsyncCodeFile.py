@@ -11,9 +11,10 @@ from package.config.GEServer import *
 from package.tools.Git.Git import Git
 from package.tools.SSH.SSH import SSH
 from package.tools.Help.Path import Path
+from package.gui.workTools.BaseGui import BaseGui
 
 
-class RsyncCodeFile:
+class RsyncCodeFile(BaseGui):
     """代码文件同步"""
     # 默认代码搜索路径
     default_file_path = '/Users/lusongsong/Code/php/mobile_mba'
@@ -55,7 +56,7 @@ class RsyncCodeFile:
 
     def __init__(self, root_tk):
         """首页初始化"""
-        self.rootTk = root_tk
+        super(RsyncCodeFile, self).__init__(root_tk)
         # 代码文件路径
         default_path_str = tkinter.StringVar()
         default_path_str.set(RsyncCodeFile.default_file_path)
@@ -86,7 +87,7 @@ class RsyncCodeFile:
         self.server_combobox.grid(row=0, column=3, sticky='n')
         self.get_server()
         self.search_button.grid(row=1, columnspan=4, sticky='s', ipadx=10)
-        self.rootTk.update()
+        self.rootTk.pack()
 
     def get_server(self):
         """根据路径获取服务器"""

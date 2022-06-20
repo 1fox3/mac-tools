@@ -4,7 +4,7 @@
 import tkinter
 
 from package.gui.workTools.rsyncCodeFile.RsyncCodeFile import RsyncCodeFile
-# from package.gui.workTools.version.VersionCopy import VersionCopy
+from package.gui.workTools.version.VersionCopy import VersionCopy
 # from package.gui.workTools.logs.LogsDownload import LogsDownload
 from package.gui.workTools.servers.ServersLogin import ServersLogin
 # from package.gui.workTools.systemInput.SystemInputLog import SystemInputLog
@@ -52,29 +52,33 @@ class HomePage:
 
     def add_menu(self):
         """添加菜单栏"""
-        tk_menu = tkinter.Menu(self.rootTk, tearoff=False)
         menu_config = {
             'RsyncCodeFile': {
                 'label': 'RsyncCodeFile',
-                'command': self.rsync_code_file
+                'sub_menu': [
+                    {
+                        'label': 'RsyncCodeFile',
+                        'command': self.rsync_code_file
+                    },
+                ],
             },
-            # 'Version': {
-            #     'label': 'Version',
-            #     'sub_menu': [
-            #         {
-            #             'label': 'Copy',
-            #             'command': self.version_copy
-            #         },
-            #         {
-            #             'label': 'Local Debug',
-            #             'command': self.version_local_debug
-            #         },
-            #         {
-            #             'label': 'Local Ignore',
-            #             'command': self.version_local_ignore
-            #         },
-            #     ],
-            # },
+            'Version': {
+                'label': 'Version',
+                'sub_menu': [
+                    {
+                        'label': 'Copy',
+                        'command': self.version_copy
+                    },
+                    # {
+                    #     'label': 'Local Debug',
+                    #     'command': self.version_local_debug
+                    # },
+                    # {
+                    #     'label': 'Local Ignore',
+                    #     'command': self.version_local_ignore
+                    # },
+                ],
+            },
             # 'Logs': {
             #     'label': 'Logs',
             #     'sub_menu': [
@@ -150,19 +154,20 @@ class HomePage:
             #     'command': self.java_dao_tool
             # },
         }
-        self.rootTk.config(menu=tk_menu)
+        tk_menu = tkinter.Menu(self.rootTk)
         for menu_key in menu_config.keys():
             menu_option = menu_config[menu_key]
             if ('sub_menu' not in menu_option.keys()) or (not menu_option['sub_menu']):
                 tk_menu.add_command(menu_option)
             else:
                 sub_menu = menu_option['sub_menu']
-                sub_menu_tk = tkinter.Menu(self.rootTk, tearoff=False)
+                sub_menu_tk = tkinter.Menu(self.rootTk)
                 for sub_menu_option in sub_menu:
                     sub_menu_tk.add_command(sub_menu_option)
                 menu_option['menu'] = sub_menu_tk
                 menu_option.pop('sub_menu')
                 tk_menu.add_cascade(menu_option)
+        self.rootTk.config(menu=tk_menu)
 
     def show(self):
         """显示初始界面"""
@@ -172,10 +177,10 @@ class HomePage:
     def rsync_code_file(self):
         """启动同步代码文件页面"""
         self.refresh_page(RsyncCodeFile)
-    #
-    # def version_copy(self):
-    #     """启动版本复制页面"""
-    #     self.refresh_page(VersionCopy)
+
+    def version_copy(self):
+        """启动版本复制页面"""
+        self.refresh_page(VersionCopy)
     #
     # def logs_download(self):
     #     """启动版本复制页面"""
