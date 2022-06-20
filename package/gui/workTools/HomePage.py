@@ -2,7 +2,8 @@
 # -*- coding:utf-8 -*-
 
 import tkinter
-# from package.gui.workTools.rsyncCodeFile.RsyncCodeFile import RsyncCodeFile
+
+from package.gui.workTools.rsyncCodeFile.RsyncCodeFile import RsyncCodeFile
 # from package.gui.workTools.version.VersionCopy import VersionCopy
 # from package.gui.workTools.logs.LogsDownload import LogsDownload
 from package.gui.workTools.servers.ServersLogin import ServersLogin
@@ -53,10 +54,10 @@ class HomePage:
         """添加菜单栏"""
         tk_menu = tkinter.Menu(self.rootTk, tearoff=False)
         menu_config = {
-            # 'RsyncCodeFile': {
-            #     'label': 'RsyncCodeFile',
-            #     'command': self.rsync_code_file
-            # },
+            'RsyncCodeFile': {
+                'label': 'RsyncCodeFile',
+                'command': self.rsync_code_file
+            },
             # 'Version': {
             #     'label': 'Version',
             #     'sub_menu': [
@@ -165,12 +166,12 @@ class HomePage:
 
     def show(self):
         """显示初始界面"""
-        self.string_handle()
+        self.rsync_code_file()
         self.rootTk.mainloop()
 
-    # def rsync_code_file(self):
-    #     """启动同步代码文件页面"""
-    #     self.refresh_page(RsyncCodeFile)
+    def rsync_code_file(self):
+        """启动同步代码文件页面"""
+        self.refresh_page(RsyncCodeFile)
     #
     # def version_copy(self):
     #     """启动版本复制页面"""
@@ -179,7 +180,7 @@ class HomePage:
     # def logs_download(self):
     #     """启动版本复制页面"""
     #     self.refresh_page(LogsDownload)
-    #
+
     def servers_login(self):
         """登录服务器"""
         self.refresh_page(ServersLogin)

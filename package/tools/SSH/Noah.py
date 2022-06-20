@@ -150,12 +150,11 @@ class Noah:
 
     @staticmethod
     def get_upload_url():
-        log_file_full_path = Noah.get_log_file_full_path()
-        file_obj = File()
-        log_file_obj = file_obj.open(log_file_full_path, 'r')
-        log_file_size = os.path.getsize(log_file_full_path)
-        log_file_obj.seek(log_file_size - 500)
-        lines = log_file_obj.readlines()
+        MouseCommand.multi_key_input(['command', 'a'])
+        time.sleep(0.2)
+        MouseCommand.multi_key_input(['command', 'c'])
+        lines = pyperclip.paste()
+        lines = lines.split("\n")
         for line in lines:
             line = line.strip()
             if line.find('http') >= 0 and line.find('up.bastion.jd.com') >= 0:
@@ -188,19 +187,27 @@ class Noah:
             url = upload_url + up_load_file_info['dir'][1:] + '/'
             url = url.replace('//', '/')
             browser_resource = os.popen(browser + ' ' + url)
-            time.sleep(2)
+            time.sleep(1)
             MouseCommand.key_input('tab')
-            time.sleep(2)
-            MouseCommand.key_input('enter')
-            time.sleep(2)
-            Noah.input_command(up_load_file_info['local_file_path'])
-            time.sleep(2)
+            time.sleep(1)
+            MouseCommand.key_input('return')
+            time.sleep(1)
+            MouseCommand.multi_key_input(['command', 'shift', 'g'])
+            time.sleep(1)
+            Noah.input_command(up_load_file_info['local_file_path'], 1, '')
+            # 按一下功能键，防止把return当文案处理
+            MouseCommand.key_input('command')
+            time.sleep(1)
+            MouseCommand.key_input('return')
+            time.sleep(1)
+            MouseCommand.key_input('return')
+            time.sleep(1)
             MouseCommand.key_input('tab')
-            time.sleep(2)
-            MouseCommand.key_input('enter')
-            time.sleep(2)
-            MouseCommand.multi_key_input(['ctrl', 'w'])
-            time.sleep(2)
+            time.sleep(1)
+            MouseCommand.key_input('return')
+            time.sleep(1)
+            MouseCommand.multi_key_input(['command', 'w'])
+            time.sleep(1)
             browser_resource.close()
 
     @staticmethod
