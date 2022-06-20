@@ -1,0 +1,5 @@
+__pycache__
+/.idea
+/tools/jdDinner.txt
+/package/config/GEDb.py
+/package/config/GEServer.py
