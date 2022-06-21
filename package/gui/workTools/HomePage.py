@@ -5,7 +5,7 @@ import tkinter
 
 from package.gui.workTools.rsyncCodeFile.RsyncCodeFile import RsyncCodeFile
 from package.gui.workTools.version.VersionCopy import VersionCopy
-# from package.gui.workTools.logs.LogsDownload import LogsDownload
+from package.gui.workTools.logs.LogsDownload import LogsDownload
 from package.gui.workTools.servers.ServersLogin import ServersLogin
 # from package.gui.workTools.systemInput.SystemInputLog import SystemInputLog
 # from package.gui.workTools.systemInput.SystemInputRepeat import SystemInputRepeat
@@ -79,15 +79,15 @@ class HomePage:
                     # },
                 ],
             },
-            # 'Logs': {
-            #     'label': 'Logs',
-            #     'sub_menu': [
-            #         {
-            #             'label': 'download',
-            #             'command': self.logs_download
-            #         },
-            #     ],
-            # },
+            'Logs': {
+                'label': 'Logs',
+                'sub_menu': [
+                    {
+                        'label': 'download',
+                        'command': self.logs_download
+                    },
+                ],
+            },
             'Servers': {
                 'label': 'Servers',
                 'sub_menu': [
@@ -181,10 +181,10 @@ class HomePage:
     def version_copy(self):
         """启动版本复制页面"""
         self.refresh_page(VersionCopy)
-    #
-    # def logs_download(self):
-    #     """启动版本复制页面"""
-    #     self.refresh_page(LogsDownload)
+
+    def logs_download(self):
+        """启动版本复制页面"""
+        self.refresh_page(LogsDownload)
 
     def servers_login(self):
         """登录服务器"""

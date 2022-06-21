@@ -232,7 +232,8 @@ class Noah:
 
             # 确保目录存在
             if not os.path.exists(save_path):
-                os.system('mkdir ' + Path.path_suit_sys(save_path))
+                print(save_path)
+                os.system('mkdir -p ' + Path.path_suit_sys(save_path))
             # 删除当前的日志文件
             if os.path.exists(save_file):
                 os.remove(save_file)
