@@ -94,7 +94,7 @@ class RsyncCodeFile(BaseGui):
         path = self.get_local_path(self.path_entry)
         service_list = []
         path = path if isinstance(path, str) else ''
-        path_arr = path.split('\\')
+        path_arr = path.split('/')
         for sub_path in RsyncCodeFile.path_server_config.keys():
             if sub_path in path_arr:
                 service_list.append(RsyncCodeFile.path_server_config[sub_path])
@@ -130,7 +130,7 @@ class RsyncCodeFile(BaseGui):
         self.replace_des_path_entry.grid(row=3, column=3, sticky='n')
         rsync_button = tkinter.Button(self.rootTk, command=self.rsync_file, text='rsync')
         rsync_button.grid(row=4, columnspan=4, sticky='s', ipadx=10)
-        self.rootTk.update()
+        self.rootTk.pack()
 
     @staticmethod
     def get_local_path(obj, end=''):
