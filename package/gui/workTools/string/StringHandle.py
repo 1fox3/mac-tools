@@ -12,7 +12,7 @@ class StringHandle(BaseGui):
 
     def __init__(self, root_tk):
         """首页初始化"""
-        super(StringHandle, self).__init__(root_tk)
+        super().__init__(root_tk)
         # 文本域
         self.ori_text_area = tkinter.Text(self.rootTk)
         self.des_text_area = tkinter.Text(self.rootTk)

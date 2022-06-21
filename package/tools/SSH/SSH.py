@@ -101,11 +101,13 @@ class SSH:
         time.sleep(sleep_time)
 
     @staticmethod
-    def close():
-        """关闭SSH"""
-        ssh_class = SSH.ssh_class()
-        if ssh_class:
-            ssh_class.close()
+    def sz_file(file_path, save_path):
+        SSH.down_files([
+            {
+                'download_file': file_path,
+                'save_file': save_path,
+            }
+        ])
 
     @staticmethod
     def upload_files(upload_file_info_list):

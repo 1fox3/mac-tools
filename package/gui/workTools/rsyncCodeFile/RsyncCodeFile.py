@@ -56,7 +56,7 @@ class RsyncCodeFile(BaseGui):
 
     def __init__(self, root_tk):
         """首页初始化"""
-        super(RsyncCodeFile, self).__init__(root_tk)
+        super().__init__(root_tk)
         # 代码文件路径
         default_path_str = tkinter.StringVar()
         default_path_str.set(RsyncCodeFile.default_file_path)

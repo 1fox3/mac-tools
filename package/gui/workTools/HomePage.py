@@ -9,9 +9,9 @@ from package.gui.workTools.logs.LogsDownload import LogsDownload
 from package.gui.workTools.servers.ServersLogin import ServersLogin
 # from package.gui.workTools.systemInput.SystemInputLog import SystemInputLog
 # from package.gui.workTools.systemInput.SystemInputRepeat import SystemInputRepeat
-# from package.gui.workTools.gEDb.GEDbLogin import GEDbLogin
-# from package.gui.workTools.gEDb.GEDbTableRsync import GEDbTableRsync
-# from package.gui.workTools.gEDb.GEDbTableDataDownload import GEDbTableDataDownload
+from package.gui.workTools.gEDb.GEDbLogin import GEDbLogin
+from package.gui.workTools.gEDb.GEDbTableRsync import GEDbTableRsync
+from package.gui.workTools.gEDb.GEDbTableDataDownload import GEDbTableDataDownload
 # from package.gui.workTools.version.VersionLocalDebug import VersionLocalDebug
 from package.gui.workTools.string.StringHandle import StringHandle
 # from package.gui.workTools.dinner.DinnerAdd import DinnerAdd
@@ -97,23 +97,23 @@ class HomePage:
                     },
                 ],
             },
-            # 'DB': {
-            #     'label': 'DB',
-            #     'sub_menu': [
-            #         {
-            #             'label': 'login',
-            #             'command': self.ge_db_login
-            #         },
-            #         {
-            #             'label': 'table rsync',
-            #             'command': self.ge_db_table_rsync
-            #         },
-            #         {
-            #             'label': 'data download',
-            #             'command': self.ge_db_data_download
-            #         },
-            #     ],
-            # },
+            'DB': {
+                'label': 'DB',
+                'sub_menu': [
+                    {
+                        'label': 'login',
+                        'command': self.ge_db_login
+                    },
+                    {
+                        'label': 'table rsync',
+                        'command': self.ge_db_table_rsync
+                    },
+                    {
+                        'label': 'data download',
+                        'command': self.ge_db_data_download
+                    },
+                ],
+            },
             # 'SystemInput': {
             #     'label': 'SystemInput',
             #     'sub_menu': [
@@ -197,19 +197,19 @@ class HomePage:
     # def system_input_repeat(self):
     #     """重放系统输入操作"""
     #     self.refresh_page(SystemInputRepeat)
-    #
-    # def ge_db_login(self):
-    #     """登录数据库"""
-    #     self.refresh_page(GEDbLogin)
 
-    # def ge_db_table_rsync(self):
-    #     """数据表同步"""
-    #     self.refresh_page(GEDbTableRsync)
-    #
-    # def ge_db_data_download(self):
-    #     """数据表数据下载"""
-    #     self.refresh_page(GEDbTableDataDownload)
-    #
+    def ge_db_login(self):
+        """登录数据库"""
+        self.refresh_page(GEDbLogin)
+
+    def ge_db_table_rsync(self):
+        """数据表同步"""
+        self.refresh_page(GEDbTableRsync)
+
+    def ge_db_data_download(self):
+        """数据表数据下载"""
+        self.refresh_page(GEDbTableDataDownload)
+
     # def version_local_debug(self):
     #     """启动版本本地调试页面"""
     #     self.refresh_page(VersionLocalDebug)

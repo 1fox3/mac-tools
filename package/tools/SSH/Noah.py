@@ -252,9 +252,3 @@ class Noah:
             shutil.move(temp_download_file, save_file)
             time.sleep(2)
             browser_resource.close()
-
-    @staticmethod
-    def close():
-        MouseCommand.windows_system_command('window_close')
-        time.sleep(2)
-        MouseCommand.input_command('\n')

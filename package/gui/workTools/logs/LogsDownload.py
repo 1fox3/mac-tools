@@ -53,7 +53,7 @@ class LogsDownload(BaseGui):
 
     def __init__(self, root_tk):
         """首页初始化"""
-        super(LogsDownload, self).__init__(root_tk)
+        super().__init__(root_tk)
         # 业务类型
         self.service_combobox = ttk.Combobox(self.rootTk, width=30)
         # 服务器列表
