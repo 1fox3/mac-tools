@@ -3,7 +3,7 @@
 
 import json
 
-# from package.tools.Sql.MySql import MySql
+from package.tools.Sql.MySql import MySql
 
 
 class DBLog:
@@ -27,11 +27,9 @@ class DBLog:
             return False
         log_insert_sql = "INSERT INTO `%s`.`%s` (`break_point`, `log_info`) VALUES ('%s', '%s')" %\
                          (DBLog.db, DBLog.table, str(break_point), log_info.replace("'", "\\'"))
-        print(log_insert_sql)
         # noinspection PyBroadException
         try:
-            # return True if MySql.connect(DBLog.db).query(log_insert_sql) else False
-            return True
+            return True if MySql.connect(DBLog.db).query(log_insert_sql) else False
         except Exception as e:
             pass
         return False
