@@ -21,9 +21,12 @@ class JDShopUnsubscribe(MobileControl):
             time.sleep(3)
             self.device(text="全选").click_exists(timeout=2)
             time.sleep(2)
-            elems = self.device.xpath("//*[@text='取消关注']").all()
-            elems.reverse()
-            elems[0].click()
+            for i in range(0, 19):
+                y = str(20 - i)
+                cancel_str = "取消关注(" + y + ")"
+                if self.device(text=cancel_str).exists:
+                    self.device(text=cancel_str).click()
+                    break
             time.sleep(2)
             self.device(text="确定").click_exists(timeout=2)
             time.sleep(2)

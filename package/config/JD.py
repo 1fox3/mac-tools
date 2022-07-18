@@ -5,7 +5,7 @@
 JD = {
     'erp_info': {
         'erp': 'lusongsong2',
-        'password': 'Lss20181122!2',
+        'password': 'Lss20181122!3',
     },
     'email': 'lusongsong@jd.com',
     # 功能页面地址

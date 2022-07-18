@@ -191,7 +191,7 @@ class Noah:
             MouseCommand.key_input('tab')
             time.sleep(1)
             MouseCommand.key_input('return')
-            time.sleep(1)
+            time.sleep(3)
             MouseCommand.multi_key_input(['command', 'shift', 'g'])
             time.sleep(1)
             Noah.input_command(up_load_file_info['local_file_path'], 1, '')
