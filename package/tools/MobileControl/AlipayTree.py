@@ -26,7 +26,7 @@ class AlipayTree(MobileControl):
     def collect_fertilizer(self, delay=2):
         """领取肥料"""
         print('领取肥料')
-        self.device.click(0.802, 0.665)
+        self.device.click(0.803, 0.62)
         time.sleep(1)
         self.device.click(0.496, 0.715)
         time.sleep(delay)
@@ -68,7 +68,7 @@ class AlipayTree(MobileControl):
         """查找浏览商品位置"""
         print('查找浏览商品位置')
         for i in range(4):
-            goods_str = '逛一逛领1500肥料 (' + str(i) + '/3)'
+            goods_str = ' 逛一逛领1500肥料 (' + str(i) + '/3)'
             if self.device(text=goods_str).exists:
                 return [i, self.device(text=goods_str).bounds()]
         return None
@@ -99,8 +99,8 @@ class AlipayTree(MobileControl):
             self.device.swipe(500, 1515, 500, 654)
             if not self.device(text="逛淘宝芭芭农场领900肥料").exists:
                 continue
-            if self.device(text="去逛逛").exists and self.device(text="逛逛淘宝芭芭农场 (0/1)").exists:
-                goto_taobao_pos = self.device(text="逛逛淘宝芭芭农场 (0/1)").bounds()
+            if self.device(text="去逛逛").exists and self.device(text=" 逛逛淘宝芭芭农场 (0/1)").exists:
+                goto_taobao_pos = self.device(text=" 逛逛淘宝芭芭农场 (0/1)").bounds()
                 for elem in self.device.xpath("//*[@text='去逛逛']").all():
                     if elem.bounds[1] > goto_taobao_pos[1]:
                         elem.click()

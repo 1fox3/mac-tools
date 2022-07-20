@@ -99,9 +99,12 @@ class TaoBaoTree(MobileControl):
     def scan_task(self, delay=2):
         """浏览任务"""
         print("浏览任务")
-        for i in range(4):
+        for i in range(6):
             if self.device(text="逛逛'买多少返多少'(0/1)").exists:
-                self.device(text="逛逛'买多少返多少'(0/1)").click()
+                goto_taobao_pos = self.device(text="逛逛'买多少返多少'(0/1)").bounds()
+                x = int((goto_taobao_pos[0] + goto_taobao_pos[2]) / 2)
+                y = int((goto_taobao_pos[1] + goto_taobao_pos[3]) / 2)
+                self.device.click(x, y)
                 time.sleep(3)
                 self.device.click(0.922, 0.266)
                 time.sleep(7)
@@ -110,7 +113,10 @@ class TaoBaoTree(MobileControl):
                 self.back()
                 continue
             if self.device(text="浏览15秒得300肥料").exists:
-                self.device(text="浏览15秒得300肥料").click()
+                goto_taobao_pos = self.device(text="浏览15秒得300肥料").bounds()
+                x = int((goto_taobao_pos[0] + goto_taobao_pos[2]) / 2)
+                y = int((goto_taobao_pos[1] + goto_taobao_pos[3]) / 2)
+                self.device.click(x, y)
                 time.sleep(7)
                 self.device.swipe(500, 950, 500, 800)
                 time.sleep(18)
